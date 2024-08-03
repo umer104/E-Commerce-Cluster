@@ -1,0 +1,31 @@
+.App {
+  text-align: center;
+}
+
+h1{
+  font-size: 1.8rem;
+  padding: 1rem 0;
+}
+h2{
+  font-size: 1.4rem;
+  padding: 0.5rem 0;
+}
+h3{
+  padding: 1rem 0;
+}
+.logo{
+  width: 70px;
+  height: 70px;
+  float: left;
+  margin-left: 20px;
+}
+.navitems{
+  margin-left: 30px;
+}
+.products a{
+  text-decoration: none;
+  color: red;
+}
+.rating span{
+  margin: 0.1rem;
+}
