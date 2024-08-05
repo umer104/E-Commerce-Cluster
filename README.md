@@ -98,7 +98,7 @@ Open your web browser and use the following URLs to verify if the services are a
 ```bash
 cd Kubernetes
 ```
-### Note: update frontend.yaml and backend.yaml to change the image for you push dockerhub with your username. ![image](https://github.com/user-attachments/assets/2e31512d-6ea2-4c7e-b33a-40a56db17521)
+### Note: To update frontend.yaml and backend.yaml to use your Docker Hub username. ![image](https://github.com/user-attachments/assets/2e31512d-6ea2-4c7e-b33a-40a56db17521)
 
 2. you can apply all the **YAML** files in a single command if they are in the same directory:
 ```bash
