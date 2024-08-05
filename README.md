@@ -21,17 +21,17 @@ git clone https://github.com/umer104/E-Commerce-Cluster.git
 cd E-Commerce-Cluster
 ```
 ## 1. Build Images and Push DockerHub
-1. To log in to your DockerHub account from the command line, you can use the following command:
+**1.** To log in to your DockerHub account from the command line, you can use the following command:
 ```bash
 docker login -u <your-username> -p <your-password>
 ```
-2. Frontend Build Image & Push DockerHub:
+**2.** Frontend Build Image & Push DockerHub:
+
 Go to frontend Directory.
 ```bash
 cd frontend
 ```
 Build Image.
-Go to frontend Directory.
 ```bash
 docker build -t frontend .
 ```
@@ -43,13 +43,13 @@ Push Image.
 ```bash
 docker push yourusername/frontend:latest
 ```
-3. Backend Build Image & Push DockerHub:
+**3.** Backend Build Image & Push DockerHub:
+
 Go to backend Directory.
 ```bash
 cd backend
 ```
 Build Image.
-Go to backend Directory.
 ```bash
 docker build -t backend .
 ```
@@ -123,3 +123,92 @@ kubectl apply -f .
 ```
 
 ## 3. Setup NFS Server
+Step 1: Install NFS Server on the Server Machine
+Update the package index:
+```bash
+sudo apt update
+```
+Install the NFS kernel server package:
+```bash
+sudo apt install nfs-kernel-server
+```
+Step 2: Configure the NFS Server
+Create the directory you want to share:
+```bash
+sudo mkdir -p /mnt/volume
+```
+Change the permissions of the directory (optional, depending on your requirements):
+```bash
+sudo chown nobody:nogroup /mnt/volume
+sudo chmod 777 /mnt/volume
+```
+Edit the exports file to share the directory:
+Open the exports file with a text editor:
+```bash
+sudo nano /etc/exports
+```
+Add the following line to share the directory with specific client IP addresses:
+```bash
+/mnt/volume 192.168.1.0/24(rw,sync,no_subtree_check) # Ensure This IP Address your NFS Server IP.
+```
+Here, 192.168.1.0/24 allows all clients in the 192.168.1.x network to access the share.
+Export the shared directories:
+```bash
+sudo exportfs -a
+```
+Restart the NFS server to apply the changes:
+```bash
+sudo systemctl restart nfs-kernel-server
+```
+### These Steps Run Every Worker Node's.
+Step 1: Install NFS Client on the Client Machine
+Update the package index:
+```bash
+sudo apt update
+```
+Install the NFS common package:
+```bash
+sudo apt install nfs-common
+```
+Step 2: Mount the NFS Share on the Client Machine
+Create a mount point for the NFS share:
+```bash
+sudo mkdir -p /mnt/volume
+```
+Mount the NFS share to the mount point:
+```bash
+sudo mount 192.168.1.100:/mnt/volume /mnt/volume # Ensure This IP of Your NFS server IP.
+```
+Replace 192.168.1.100 with the IP address of your NFS server.
+
+Verify the mount:
+```bash
+df -h
+```
+You should see the NFS share listed in the output.
+Step 3: Configure NFS Share to Mount Automatically
+To make the NFS share mount automatically at boot time, add an entry to the /etc/fstab file on the client machine:
+Open the fstab file for editing:
+```bash
+sudo nano /etc/fstab
+```
+Add the following line to the end of the file:
+```bash
+192.168.1.100:/mnt/volume /mnt/volume nfs defaults 0 0
+```
+Save and close the file.
+Test the fstab entry:
+```bash
+sudo mount -a
+```
+Step 4: Verify NFS Configuration
+You can test the NFS setup by creating a file on the NFS share from the client machine and checking if it appears on the server:
+Create a file on the client:
+```bash
+sudo touch /mnt/volume/testfile
+```
+Check the file on the server:
+```bash
+ls /mnt/volume
+```
+You should see testfile listed in the output.
