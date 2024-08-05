@@ -220,22 +220,28 @@ ls /mnt/volume
 You should see testfile listed in the output.
 
 Update /etc/hosts
+
 To configure custom hostnames for accessing your services, follow these steps:
-
 Open the /etc/hosts file: Use a text editor with elevated permissions to edit the file. For example:
-
+```bash
 sudo nano /etc/hosts
+```
 Add Two Lines:
+```bash
 192.168.49.2   frontend.example.com   # Ensure this IP is correct for your Node's IP
 192.168.49.2   backend.example.com    # Ensure this IP is correct for your Node's IP
+```
 Check in Your Browser
 Open your web browser and use the following URLs to verify if the services are accessible:
+
 Open Frontend URL:
+```bash
 frontend.example.com
+```
 Open Backend URL:
+```bash
 backend.example.com
-
-
+```
 
 ### Project OutPut...
 1. ![Screenshot from 2024-08-05 16-06-39](https://github.com/user-attachments/assets/b7c43182-8960-494f-b8ae-d83b12de0ddb)
