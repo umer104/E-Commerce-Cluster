@@ -23,14 +23,15 @@ cd E-Commerce-Cluster
 ## 1. Build Images and Push DockerHub
 
 
-### 2. Docker Compose
+#### 1. Docker Compose
 Run the following commands to build and start the containers for the frontend, backend, and database:
 ```bash
 docker compose up -d # Run this command and wait for 3 to 5 minutes for the containers to be properly running.
 ```
 
-### 3. Update /etc/hosts
+#### 2. Update /etc/hosts
 To configure custom hostnames for accessing your services, follow these steps:
+
 **1. Open the `/etc/hosts` file**:
    Use a text editor with elevated permissions to edit the file. For example:
    ```bash
@@ -42,8 +43,9 @@ To configure custom hostnames for accessing your services, follow these steps:
    192.168.1.100   backend.example.com    # Ensure this IP is correct for your VM
    ```
 
-### 4. Check in Your Browser
+#### 3. Check in Your Browser
 Open your web browser and use the following URLs to verify if the services are accessible:
+
 **1. Open Frontend URL**:
    ```bash
    frontend.example.com:3000
@@ -52,6 +54,7 @@ Open your web browser and use the following URLs to verify if the services are a
    ```bash
    backend.example.com:8000
    ```
+
 ## 2. Kubernetes
 Go to the Kubernetes Directory.
 ```bash
