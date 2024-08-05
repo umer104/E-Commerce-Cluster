@@ -17,6 +17,13 @@ spec:
         image: umerakmal104/backend:latest
         ports:
         - containerPort: 8000
+        volumeMounts:
+        - mountPath: /app/static/images
+          name: nfs-storage
+      volumes:
+      - name: nfs-storage
+        persistentVolumeClaim:
+          claimName: nfs-volume-pvc
 ---
 apiVersion: v1
 kind: Service
