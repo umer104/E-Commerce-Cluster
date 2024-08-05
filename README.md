@@ -98,6 +98,8 @@ Open your web browser and use the following URLs to verify if the services are a
 ```bash
 cd Kubernetes
 ```
+### Note: update frontend.yaml and backend.yaml to change the image for you push dockerhub with your username. ![image](https://github.com/user-attachments/assets/2e31512d-6ea2-4c7e-b33a-40a56db17521)
+
 2. you can apply all the **YAML** files in a single command if they are in the same directory:
 ```bash
 kubectl apply -f .
@@ -105,6 +107,10 @@ kubectl apply -f .
 3. To get all resources in the **default** namespace:
 ```bash
 kubectl get all
+```
+### Note: First Enable addons ingress-nginx controller in minikube.
+```bash 
+minikube addons enable ingress
 ```
 4. To get all Ingress resources in the **ingress-nginx** namespace:
 ```bash
@@ -212,3 +218,11 @@ Check the file on the server:
 ls /mnt/volume
 ```
 You should see testfile listed in the output.
+
+
+### Project OutPut...
+1. ![Screenshot from 2024-08-05 16-06-39](https://github.com/user-attachments/assets/b7c43182-8960-494f-b8ae-d83b12de0ddb)
+2. ![Screenshot from 2024-08-05 16-06-47](https://github.com/user-attachments/assets/13411173-249d-4ebc-a926-c15310d44398)
+3. ![Screenshot from 2024-08-05 16-07-09](https://github.com/user-attachments/assets/ca5e91bc-09d3-460c-b2ab-a3cacba0d982)
+4. ![Screenshot from 2024-08-05 16-07-31](https://github.com/user-attachments/assets/3aa2740e-b830-426e-83b9-89d03f557f04)
+5. ![Screenshot from 2024-08-05 16-09-26](https://github.com/user-attachments/assets/c8ed30f4-6525-4ee9-9800-97c893725b6e)
